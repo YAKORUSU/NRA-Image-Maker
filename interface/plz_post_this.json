@@ -1,0 +1,13 @@
+{
+"issue_date": {発行日(yyMMdd):int},
+"date" : {開催日("20xx年x回x日"):str},
+"place" : {開催場所("東京"):str},
+"race_number" : {レース番号(11):int},
+"money" : {金額(1000):int},
+"vote_type" : {賭け方(7):int},
+"buy" : {
+	"horse_number1" : {馬番1(3):int},
+	"horse_number2" : {馬番2(1):int},
+	"horse_number3" : {馬番3(12):int},
+	}
+}
