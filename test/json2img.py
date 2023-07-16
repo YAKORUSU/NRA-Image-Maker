@@ -1,6 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
 import json
-import tempfile
 import qrcode
 import os
 import pdb
@@ -34,6 +33,7 @@ def make_image(json_str:str)->str:
     json_dict = json.loads(json_str)
 
     # json_dictから必要な情報を取得
+    id = json_dict["id"]
     # 発行日
     issue_date = json_dict["issue_date"]
     
@@ -259,7 +259,7 @@ def make_image(json_str:str)->str:
     # 画像をtempフォルダに保存
     data_dir = "/home/yakorusu/app/temp"
     os.makedirs(data_dir, exist_ok=True)
-    save_filename = f"{data_dir}/{issue_date}.png"
+    save_filename = f"{data_dir}/{id}.png"
     image.save(save_filename)
 
 
@@ -268,7 +268,7 @@ def make_image(json_str:str)->str:
 
 
 # test
-data = {"issue_date": 20230713,"date" : "20xx年x回x日","place" : "東京","race_number" : 5,"money" : 100,"vote_type" : 7,"buy" : {"horse_number1" : 2,"horse_number2" : 10,"horse_number3" : 18}}
+data = {"id": 1, "issue_date": 20230713,"date" : "20xx年x回x日","place" : "東京","race_number" : 5,"money" : 100,"vote_type" : 7,"buy" : {"horse_number1" : 2,"horse_number2" : 10,"horse_number3" : 18}}
 json_str = json.dumps(data)
 race_result = make_image(json_str)
 print(race_result)
