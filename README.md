@@ -17,8 +17,8 @@ POSTされたJsonを元に馬券の画像を作成しリターンを行います
 ```Shell
 #通信テスト時
 http://{$hostname}:8000/
-#馬券生成時(データPOST時)
-http://{$hostname}:8000/make_image
+#馬券生成時
+http://{$hostname}:8000/make_image3/{id}/{issue}/{deta}/{place}/{race_number}/{money}/{vote_type}/{horse_number1}/{horse_number2}/{horse_number3}/
 ```
 //TODO
 
