@@ -1,6 +1,5 @@
 from PIL import Image, ImageDraw, ImageFont
 import json
-import tempfile
 import qrcode
 import os
 import pdb
@@ -34,6 +33,7 @@ def make_image(json_str:str)->str:
     json_dict = json.loads(json_str)
 
     # json_dictから必要な情報を取得
+    id = json_dict["id"]
     # 発行日
     issue_date = json_dict["issue_date"]
     
@@ -259,7 +259,7 @@ def make_image(json_str:str)->str:
     # 画像をtempフォルダに保存
     data_dir = "/home/yakorusu/app/temp"
     os.makedirs(data_dir, exist_ok=True)
-    save_filename = f"{data_dir}/{issue_date}.png"
+    save_filename = f"{data_dir}/{id}.png"
     image.save(save_filename)
 
     return save_filename
