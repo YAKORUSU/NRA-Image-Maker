@@ -274,7 +274,7 @@ def make_image(json_str:str)->str:
     image.save(save_filename)
 
     #リターンするURL作成
-    host_name = "img.neosvr.dev"
+    host_name = "host_name"
     port_num = 8030
 
     testprint = f"http://{host_name}:{port_num}/{uid}.png"
