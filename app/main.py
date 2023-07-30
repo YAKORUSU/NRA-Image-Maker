@@ -41,4 +41,4 @@ async def get(id: int, issue: int, deta: str, place: str, race_number: int, mone
     }
     print(json_data)
     json_str = json.dumps(json_data)
-    return FileResponse(make_image.make_image(json_str))
+    return make_image.make_image(json_str)
