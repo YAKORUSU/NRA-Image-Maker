@@ -19,6 +19,9 @@ POSTされたJsonを元に馬券の画像を作成しリターンを行います
 http://{$hostname}:8000/
 #馬券生成時
 http://{$hostname}:8000/make_image3/{id}/{issue}/{deta}/{place}/{race_number}/{money}/{vote_type}/{horse_number1}/{horse_number2}/{horse_number3}/
+
+#レスポンス
+http://{$hostname}:8030/{uid}.png
 ```
 //TODO
 
