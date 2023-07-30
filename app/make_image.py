@@ -4,6 +4,7 @@ import qrcode
 import os
 import pdb
 import random
+import uuid
 
 vote_type_str = {
     1: "単勝",
@@ -148,6 +149,13 @@ def make_image(json_str:str)->str:
     random_number_text_y = 635.0
     draw.text((random_number_text_x, random_number_text_y), random_number_text, font=random_number_font, fill=random_number_text_color)
 
+    #注意書きの描画
+    caution_text = "※当日発売分のみ有効"
+    caution_text_color = (0, 0, 0)#黒
+    caution_text_x = 800.0
+    caution_text_y = 19.0
+    draw.text((caution_text_x, caution_text_y), caution_text, font=random_number_font, fill=caution_text_color)
+
     #QRコードの描画を２つ行う
     #QRコードの生成
     qr = qrcode.QRCode(
@@ -254,12 +262,20 @@ def make_image(json_str:str)->str:
             horse_number3_y = 210.0
         draw.text((horse_number3_x, horse_number3_y), str(horse_number3), font=horse_number_font, fill=horse_number3_color)
 
-
+    #U-IDの生成
+    uid = str(uuid.uuid4())
 
     # 画像をtempフォルダに保存
     data_dir = "/home/yakorusu/app/temp"
     os.makedirs(data_dir, exist_ok=True)
-    save_filename = f"{data_dir}/{id}.png"
+
+    #U-IDをファイル名にする
+    save_filename = f"{data_dir}/{uid}.png"
     image.save(save_filename)
 
-    return save_filename
+    #リターンするURL作成
+    host_name = "img.neosvr.dev"
+    port_num = 8030
+
+    testprint = f"http://{host_name}:{port_num}/{uid}.png"
+    return testprint
