@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request, Query
 from fastapi.responses import FileResponse
 from typing import Optional, Dict
 import make_image
+import payout
 import json
 import urllib.parse
 
@@ -42,3 +43,12 @@ async def get(id: int, issue: int, deta: str, place: str, race_number: int, mone
     print(json_data)
     json_str = json.dumps(json_data)
     return make_image.make_image(json_str)
+
+
+@app.get("/payout/{race_id}/{baken_id}/{horse_number1}/{horse_number2}/{horse_number3}")
+async def payout(race_id: str, baken_id: int, horse_number1: int, horse_number2: int, horse_number3: int):
+    return payout.baken_payout(race_id, baken_id, horse_number1, horse_number2, horse_number3)
+
+@app.get("/nar_payout/{race_id}/{baken_id}/{horse_number1}/{horse_number2}/{horse_number3}")
+async def payout(race_id: str, baken_id: int, horse_number1: int, horse_number2: int, horse_number3: int):
+    return payout.baken_nar_payout(race_id, baken_id, horse_number1, horse_number2, horse_number3)
