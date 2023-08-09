@@ -31,7 +31,7 @@ jobs:
     - name: Type checking with Mypy
       run: |
         # Perform type checking using Mypy
-        mypy your_app_module.py  # Replace with the actual file/module name
+        mypy main.py 
     - name: Test with pytest
       run: |
         pytest -v -ra
