@@ -31,7 +31,7 @@ jobs:
     - name: Type checking with Mypy
       run: |
         # Perform type checking using Mypy
-        mypy main.py 
+        mypy /app/main.py 
     - name: Test with pytest
       run: |
         pytest -v -ra
